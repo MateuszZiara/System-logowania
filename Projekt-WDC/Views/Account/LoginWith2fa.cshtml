@@ -1,0 +1,40 @@
+@model Projekt_WDC.ViewModels.LoginWith2faViewModel
+@{
+    ViewData["Title"] = "Uwierzytelnianie dwuskładnikowe";
+}
+
+<div class="auth-wrapper">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Uwierzytelnianie 2FA</h2>
+            <p class="text-muted small">Twoje logowanie jest chronione aplikacją uwierzytelniającą. Wpisz kod poniżej.</p>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+                <input asp-for="RememberMe" type="hidden" />
+                <div asp-validation-summary="All" class="text-danger mb-3 small"></div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="TwoFactorCode" class="form-control" autocomplete="off" placeholder="Kod uwierzytelniający" />
+                    <label asp-for="TwoFactorCode">Kod uwierzytelniający</label>
+                    <span asp-validation-for="TwoFactorCode" class="text-danger small"></span>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input asp-for="RememberMachine" class="form-check-input" />
+                    <label asp-for="RememberMachine" class="form-check-label small text-muted">
+                        Zapamiętaj to urządzenie
+                    </label>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Zaloguj się</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

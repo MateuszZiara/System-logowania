@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Strona główna";
+}
+
+<div class="text-center">
+    <div class="mb-4">
+        <h1 class="display-5 fw-bold text-dark">Witaj, @User.Identity?.Name</h1>
+        <p class="lead text-muted">Jesteś bezpiecznie zalogowany.</p>
+        
+        <div class="mt-4">
+             <a asp-controller="Account" asp-action="EnableAuthenticator" class="btn btn-primary">Skonfiguruj 2FA</a>
+        </div>
+    </div>
+    
+    <form asp-controller="Account" asp-action="Logout" method="post" class="mt-3">
+        <button type="submit" class="btn btn-outline-danger btn-lg">
+            Wyloguj się
+        </button>
+    </form>
+</div>
